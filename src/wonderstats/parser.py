@@ -24,7 +24,6 @@ def _get_players_stats(bgatable: BGATable):
             field : 0 if str(key) not in stat["stats"] else int(stat["stats"][str(key)])
             for key, field in STATS_LABEL.items()
         }
-        print(values_by_stats_label)
 
         player = PlayerStat(
             player_id=player_id,
