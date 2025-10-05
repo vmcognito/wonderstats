@@ -1,0 +1,91 @@
+{
+    "table_id": "732730019",
+    "player1": {
+        "player_id": "95265981",
+        "player_name": "Tomollivier",
+        "elo": 213,
+        "went_first": false,
+        "thinking_time": 191,
+        "number_of_turns": 31,
+        "draw": false,
+        "civilian_victory": true,
+        "science_victory": false,
+        "military_victory": false,
+        "political_victory": false,
+        "victory_points": 58,
+        "vp_from_blue": 15,
+        "vp_from_green": 7,
+        "vp_from_yellow": 9,
+        "vp_from_purple": 4,
+        "vp_from_divinities": 0,
+        "vp_from_wonders": 9,
+        "vp_from_progress": 0,
+        "vp_from_coins": 9,
+        "vp_from_military": 5,
+        "vp_from_senate": 0,
+        "wonders": [
+            {
+                "id": 0,
+                "name": "Appian Way"
+            },
+            {
+                "id": 14,
+                "name": "Statue of Zeus"
+            },
+            {
+                "id": 15,
+                "name": "Temple of Artemis"
+            },
+            {
+                "id": 1,
+                "name": "Circus Maximus"
+            }
+        ]
+    },
+    "player2": {
+        "player_id": "96573208",
+        "player_name": "emaric",
+        "elo": 223,
+        "went_first": true,
+        "thinking_time": 338,
+        "number_of_turns": 29,
+        "draw": false,
+        "civilian_victory": false,
+        "science_victory": false,
+        "military_victory": false,
+        "political_victory": false,
+        "victory_points": 44,
+        "vp_from_blue": 11,
+        "vp_from_green": 3,
+        "vp_from_yellow": 3,
+        "vp_from_purple": 9,
+        "vp_from_divinities": 0,
+        "vp_from_wonders": 16,
+        "vp_from_progress": 0,
+        "vp_from_coins": 2,
+        "vp_from_military": 0,
+        "vp_from_senate": 0,
+        "wonders": [
+            {
+                "id": 7,
+                "name": "Hanging Gardens"
+            },
+            {
+                "id": 11,
+                "name": "Pyramids"
+            },
+            {
+                "id": 13,
+                "name": "Sphinx"
+            },
+            {
+                "id": 5,
+                "name": "Great Library"
+            }
+        ]
+    },
+    "winner": "Tomollivier",
+    "time_start": "2025-09-21T06:39:37",
+    "time_end": "2025-09-21T06:49:41",
+    "game_type": "B"
+}
