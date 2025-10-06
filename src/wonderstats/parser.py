@@ -5,11 +5,16 @@ from wonderstats.bga import BGATable
 
 def bgatable_to_tablestat(bgatable: BGATable):
     players = _get_players_stats(bgatable)
+    winner_array = [player for player in players if player.is_winner]
+    winner = None
+    if winner_array.count == 1:
+        winner = winner_array[0].player_id
+
     return TableStat(
         bgatable.table_id,
         players[0],
         players[1],
-        [player for player in players if player.is_winner][0].player_id, 
+        winner, 
         bgatable.time_start,
         bgatable.time_end,
         _get_game_type(bgatable)
@@ -25,13 +30,17 @@ def _get_players_stats(bgatable: BGATable):
             for key, field in STATS_LABEL.items()
         }
 
+        wonders_dict = []
+        if player_name in bgatable.wonders:
+            wonders_dict = bgatable.wonders[player_name]
+
         player = PlayerStat(
             player_id=player_id,
             player_name=player_name,
             elo=bgatable.elos[player_name],
             went_first=bgatable.went_first == player_name,
             draw=stat["tie"],
-            wonders=[Wonder.from_name(wonder) for wonder in bgatable.wonders[player_name]],
+            wonders=[Wonder.from_name(wonder) for wonder in wonders_dict],
             **values_by_stats_label
         )
         players[player_name] = player

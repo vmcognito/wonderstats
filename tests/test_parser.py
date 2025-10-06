@@ -38,3 +38,10 @@ def test_ts_v010(resource_path):
 
     assert ts.player2.player_id == "96573208"
     assert ts.player2.wonders[0].id == 7
+
+
+def test_abandoned_bga_v010(resource_path):
+    bga = load_bga(resource_path / "bga_abandoned_game_v0.1.2.json")
+    bgatable = bga.to_bgatable()
+    ts = bgatable_to_tablestat(bgatable)
+    assert ts.table_id == "729690472"
