@@ -1,3 +1,7 @@
+from dataclasses import asdict
+from datetime import datetime
+from json import JSONEncoder
+import json
 
 from wonderstats import STATS_LABEL, PlayerStat, TableStat, Wonder
 from wonderstats.bga import BGATable
@@ -77,3 +81,14 @@ def to_tablestat(ts_json):
     )
     
     return ts
+
+
+def to_json_str(ts: TableStat):
+    return json.dumps(obj=asdict(ts), cls=TableStatEncoder)
+
+
+class TableStatEncoder(JSONEncoder):
+    def default(self, o):
+        if isinstance(o, datetime):
+            return o.strftime("%Y-%m-%d %H:%M:%S")
+        return super().default(o)

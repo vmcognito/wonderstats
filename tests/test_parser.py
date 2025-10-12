@@ -2,7 +2,8 @@ import json
 from pathlib import Path
 import pytest
 
-from wonderstats.parser import bgatable_to_tablestat, to_tablestat
+from tests.resources import expected_values
+from wonderstats.parser import bgatable_to_tablestat, to_tablestat, to_json_str
 from wonderstats.bga import load_bga
 
 
@@ -45,3 +46,13 @@ def test_abandoned_bga_v010(resource_path):
     bgatable = bga.to_bgatable()
     ts = bgatable_to_tablestat(bgatable)
     assert ts.table_id == "729690472"
+
+
+def test_to_json_str(resource_path):
+    bga = load_bga(resource_path / "bga_v0.1.0.json")
+    bgatable = bga.to_bgatable()
+    ts = bgatable_to_tablestat(bgatable)
+
+    ts_string = to_json_str(ts)    
+    assert ts_string == expected_values.ts_str
+    assert ts == to_tablestat(json.loads(ts_string))

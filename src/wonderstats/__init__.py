@@ -114,3 +114,15 @@ class TableStat:
     time_end: datetime
     game_type: str
 
+    def __post_init__(self):
+        self.time_start = self.time_start if isinstance(self.time_start, datetime) else self._format_date(self.time_start)
+        self.time_end = self.time_end if isinstance(self.time_end, datetime) else self._format_date(self.time_end)
+
+    def _format_date(self, date_str):
+        try:
+            return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
+        except: pass
+        try:
+            return datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S')
+        except:
+            raise Exception(f"Unexpected date format: {date_str}")
