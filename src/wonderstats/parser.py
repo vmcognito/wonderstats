@@ -11,7 +11,7 @@ def bgatable_to_tablestat(bgatable: BGATable):
     players = _get_players_stats(bgatable)
     winner_array = [player for player in players if player.is_winner]
     winner = None
-    if winner_array.count == 1:
+    if len(winner_array) == 1:
         winner = winner_array[0].player_id
 
     return TableStat(
@@ -27,7 +27,12 @@ def bgatable_to_tablestat(bgatable: BGATable):
 def _get_players_stats(bgatable: BGATable):
     players = {}
     for stat in bgatable.results:
-        player_id = stat["id"]
+        # for old bga, player id key is 'player' instead of the newer 'id' key
+        if bgatable.table_id.startswith('3'):
+            player_id = stat['player']
+        else:
+            player_id = stat["id"]
+        
         player_name = stat["name"]
         values_by_stats_label = {
             field : 0 if str(key) not in stat["stats"] else int(stat["stats"][str(key)])

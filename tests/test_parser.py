@@ -56,3 +56,11 @@ def test_to_json_str(resource_path):
     ts_string = to_json_str(ts)    
     assert ts_string == expected_values.ts_str
     assert ts == to_tablestat(json.loads(ts_string))
+
+
+def test_to_ts_from_bga_old_data(resource_path):
+    bga = load_bga(resource_path / "bga_old_data.json")
+    bgatable = bga.to_bgatable()
+    ts = bgatable_to_tablestat(bgatable)
+    assert ts.table_id == "329371663"
+    
