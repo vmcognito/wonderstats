@@ -36,7 +36,7 @@ def parse_replay_html(replay_html_content: str):
         stats_line = script.find(string=re.compile('"stats"'))
         if stats_line:
             gamelogs_line = re.search(r'g_archive_mode = (.*);g_gamelogs = (.*)', stats_line).group(2)
-            results_value = re.search(r'"result":(\[(.*)\])\},', gamelogs_line).group(1)
+            results_value = re.search(r'"result"\:(\[[^\]]*\])', gamelogs_line).group(1)
             results_dict = json.loads(results_value)
             break
     
