@@ -17,6 +17,7 @@ class BGATable:
     pantheon: bool
     agora: bool
     players: dict
+    conceded: bool
 
 
 @dataclass
@@ -45,7 +46,8 @@ class BGAData:
             time_start=parser.format_datetime(table_result["time_start"]),
             time_end=parser.format_datetime(table_result["time_end"]),
             pantheon=pantheon,
-            agora=agora
+            agora=agora,
+            conceded=table_result["concede"] == "1"
         )
         return bga_table
 

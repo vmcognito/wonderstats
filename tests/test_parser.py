@@ -79,3 +79,11 @@ def test_parsing_v015(resource_path):
     bgatable = bga.to_bgatable()
     ts = bgatable_to_tablestat(bgatable)
     assert ts.table_id == "712162886"
+
+
+@pytest.mark.skipif(SKIPIF_COND, reason="Manually skipped.")
+def test_parsing_v016(resource_path):
+    bga = load_bga(resource_path / "bga_v0.1.6_conceded.json")
+    bgatable = bga.to_bgatable()
+    ts = bgatable_to_tablestat(bgatable)
+    assert ts.table_id == "730359921"

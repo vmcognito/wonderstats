@@ -28,7 +28,12 @@ def parse_replay_html(replay_html_content: str):
 
     game_logs: list[str] = list(map(lambda string: repr(string), replay_soup.find(id="replaylogs").strings))
     replay_dict["wonders"] = get_wonders(game_logs)
-    replay_dict["went_first"] = get_went_first(game_logs)
+    
+    try:
+        replay_dict["went_first"] = get_went_first(game_logs)
+    except Exception:
+        replay_dict["went_first"] = None
+
     elos = get_elos(replay_soup)
     
     results_dict = None
